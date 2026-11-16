@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prueba Fase 1 — Objetos Perdidos Campus</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script type="module" src="js/pages/prueba.js"></script>
+</head>
+<body>
+  <!-- Header de referencia: copiar en cada página. -->
+  <header class="header">
+    <div class="contenedor header__barra">
+      <a class="header__marca" href="index.html">Objetos Perdidos</a>
+      <nav aria-label="Principal">
+        <ul class="header__nav">
+          <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+          <li data-sesion="activa"><a class="header__enlace" href="reportar.html">Reportar</a></li>
+          <li data-sesion="activa"><a class="header__enlace" href="mis-avisos.html">Mis avisos</a></li>
+          <li data-rol="admin"><a class="header__enlace" href="admin.html">Admin</a></li>
+          <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+          <li data-sesion="invitado"><a class="header__enlace" href="registro.html">Registrarse</a></li>
+          <li data-sesion="activa"><span class="header__usuario" data-nombre-usuario></span></li>
+          <li data-sesion="activa"><button class="header__boton" type="button" data-logout>Salir</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="principal contenedor">
+    <h1>Prueba de la Fase 1</h1>
+    <p>Simular sesión:</p>
+    <p>
+      <button class="header__boton" type="button" data-simular="usuario">Usuario</button>
+      <button class="header__boton" type="button" data-simular="admin">Admin</button>
+      <button class="header__boton" type="button" data-simular="">Sin sesión</button>
+    </p>
+
+    <h2>Categorías (api.get)</h2>
+    <p id="estado-categorias">Cargando…</p>
+    <ul id="lista-categorias"></ul>
+  </main>
+
+  <footer class="footer">
+    <div class="contenedor">Objetos Perdidos Campus</div>
+  </footer>
+</body>
+</html>

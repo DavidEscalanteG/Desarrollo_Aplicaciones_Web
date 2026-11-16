@@ -1,0 +1,138 @@
+/* base.css — variables, reset y tipografía.
+   Variables de color y espaciado SOLO aquí. Tema oscuro: <html data-tema="oscuro">. */
+
+:root {
+  --color-fondo: #f7f7f5;
+  --color-superficie: #ffffff;
+  --color-texto: #1f2328;
+  --color-texto-suave: #5b616b;
+  --color-borde: #d9dbe0;
+  --color-primario: #1d4ed8;
+  --color-primario-hover: #1e40af;
+  --color-sobre-primario: #ffffff;
+  --color-exito: #15803d;
+  --color-alerta: #b45309;
+  --color-error: #b91c1c;
+
+  --espacio-xs: 0.25rem;
+  --espacio-sm: 0.5rem;
+  --espacio-md: 1rem;
+  --espacio-lg: 1.5rem;
+  --espacio-xl: 2.5rem;
+
+  --radio: 0.5rem;
+  --sombra: 0 1px 3px rgb(0 0 0 / 0.12);
+  --ancho-max: 72rem;
+
+  --fuente: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --texto-sm: 0.875rem;
+  --texto-base: 1rem;
+  --texto-lg: 1.25rem;
+  --texto-xl: 1.75rem;
+
+  color-scheme: light;
+}
+
+:root[data-tema="oscuro"] {
+  --color-fondo: #16181d;
+  --color-superficie: #1f2229;
+  --color-texto: #e6e8eb;
+  --color-texto-suave: #a3a9b3;
+  --color-borde: #343944;
+  --color-primario: #60a5fa;
+  --color-primario-hover: #93c5fd;
+  --color-sobre-primario: #0b1220;
+  --color-exito: #4ade80;
+  --color-alerta: #fbbf24;
+  --color-error: #f87171;
+  --sombra: 0 1px 3px rgb(0 0 0 / 0.5);
+
+  color-scheme: dark;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--fuente);
+  font-size: var(--texto-base);
+  line-height: 1.5;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Tipografía */
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin-bottom: var(--espacio-md);
+}
+
+h1 { font-size: var(--texto-xl); }
+h2 { font-size: var(--texto-lg); }
+h3 { font-size: var(--texto-base); }
+
+p + p {
+  margin-top: var(--espacio-sm);
+}
+
+a {
+  color: var(--color-primario);
+}
+
+a:hover {
+  color: var(--color-primario-hover);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primario);
+  outline-offset: 2px;
+}
+
+/* Accesibilidad: oculto en pantalla, visible para lectores. */
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
