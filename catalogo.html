@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Catálogo de objetos encontrados en el campus." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Catálogo | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/catalogo.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li>
+              <a class="header__enlace" href="catalogo.html" aria-current="page">Catálogo</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden><a class="header__enlace" href="admin.html">Admin</a></li>
+            <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <div class="pagina__encabezado">
+        <h1>Catálogo de objetos encontrados</h1>
+        <p>Aquí están los objetos que se han entregado en el campus. Si ves algo tuyo, repórtalo.</p>
+      </div>
+
+      <section class="seccion" aria-label="Filtros del catálogo" data-no-print>
+        <form id="filtros" class="filtros" role="search">
+          <div class="campo campo--ancho">
+            <label for="buscar">Buscar</label
+            ><input
+              id="buscar"
+              type="search"
+              placeholder="Nombre, color, descripción…"
+              maxlength="100"
+            />
+          </div>
+          <div class="campo campo--corto">
+            <label for="filtro-categoria">Categoría</label
+            ><select id="filtro-categoria">
+              <option value="">Todas</option>
+            </select>
+          </div>
+          <div class="campo campo--corto">
+            <label for="filtro-ubicacion">Ubicación</label
+            ><select id="filtro-ubicacion">
+              <option value="">Todas</option>
+            </select>
+          </div>
+          <div class="campo campo--corto">
+            <label for="filtro-desde">Encontrado desde</label><input id="filtro-desde" type="date" />
+          </div>
+          <div class="campo campo--corto">
+            <label for="filtro-hasta">Hasta</label><input id="filtro-hasta" type="date" />
+          </div>
+          <div class="campo acciones">
+            <button class="boton boton--secundario" type="reset">Limpiar</button
+            ><button id="imprimir" class="boton" type="button">Imprimir reporte</button>
+          </div>
+        </form>
+        <div id="recientes" class="acciones" hidden>
+          <span class="texto-suave">Búsquedas recientes:</span>
+        </div>
+      </section>
+
+      <section class="seccion" aria-labelledby="resultados-titulo" data-reporte-catalogo>
+        <h2 id="resultados-titulo">Objetos disponibles</h2>
+        <p id="catalogo-estado" class="mensaje" role="status" aria-live="polite">
+          Cargando objetos…
+        </p>
+        <button id="reintentar" class="boton boton--secundario" type="button" hidden>
+          Reintentar
+        </button>
+        <div id="lista-objetos" class="rejilla rejilla--objetos catalogo__grid"></div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>
