@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1, "id_usuario": 2, "titulo": "Mochila azul con cuadernos",
+    "id_categoria": 1, "id_ubicacion": 1, "fecha_perdida": "2026-11-10", "color": "Azul marino",
+    "descripcion": "Mochila de tela con dos compartimentos y un llavero de estrella. La dejé cerca de las mesas de estudio.",
+    "caracteristica_oculta": "El bolsillo interior tiene un parche de un planeta verde.",
+    "foto": "", "estado": "activo"
+  },
+  {
+    "id": 2, "id_usuario": 2, "titulo": "Botella térmica plateada",
+    "id_categoria": 2, "id_ubicacion": 2, "fecha_perdida": "2026-11-11", "color": "Plateado",
+    "descripcion": "Botella de acero de aproximadamente 750 ml con tapa negra. Tiene una pequeña abolladura en la base.",
+    "caracteristica_oculta": "Debajo de la tapa hay una marca con tres puntos azules.",
+    "foto": "", "estado": "coincidencia"
+  },
+  {
+    "id": 3, "id_usuario": 2, "titulo": "Cuaderno de matemáticas",
+    "id_categoria": 3, "id_ubicacion": 3, "fecha_perdida": "2026-11-06", "color": "Verde",
+    "descripcion": "Cuaderno profesional de cuadros con espiral negro y una etiqueta blanca en la portada.",
+    "caracteristica_oculta": "La última página tiene el dibujo de una tortuga.",
+    "foto": "", "estado": "cerrado"
+  },
+  {
+    "id": 4, "id_usuario": 3, "titulo": "Llaves con llavero naranja",
+    "id_categoria": 4, "id_ubicacion": 4, "fecha_perdida": "2026-11-12", "color": "Naranja",
+    "descripcion": "Juego de tres llaves pequeñas con aro metálico y un llavero de tela naranja.",
+    "caracteristica_oculta": "Una llave tiene una funda amarilla con una estrella.",
+    "foto": "", "estado": "activo"
+  },
+  {
+    "id": 5, "id_usuario": 2, "titulo": "Audífonos negros en estuche",
+    "id_categoria": 5, "id_ubicacion": 5, "fecha_perdida": "2026-11-13", "color": "Negro",
+    "descripcion": "Audífonos inalámbricos en estuche pequeño de tapa redondeada, sin funda protectora.",
+    "caracteristica_oculta": "El interior del estuche tiene una pegatina de una luna.",
+    "foto": "", "estado": "activo"
+  },
+  {
+    "id": 6, "id_usuario": 1, "titulo": "Paraguas rojo plegable",
+    "id_categoria": 6, "id_ubicacion": 6, "fecha_perdida": "2026-11-09", "color": "Rojo",
+    "descripcion": "Paraguas compacto con mango negro y funda de tela roja. Se quedó al lado de una banca.",
+    "caracteristica_oculta": "La correa tiene una costura hecha con hilo blanco.",
+    "foto": "", "estado": "activo"
+  }
+]

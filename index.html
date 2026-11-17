@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Encuentra y recupera objetos perdidos en tu campus." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Inicio | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/index.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html" aria-current="page">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden><a class="header__enlace" href="admin.html">Admin</a></li>
+            <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <section class="hero" aria-labelledby="portada-titulo">
+        <p class="eyebrow">Objetos Perdidos Campus</p>
+        <h1 id="portada-titulo">Lo que perdiste puede estar más cerca de lo que crees.</h1>
+        <p>
+          Busca entre los objetos encontrados o publica un aviso. Entre todos, hacemos que vuelvan a
+          casa.
+        </p>
+        <form class="buscador" id="buscador-portada" action="catalogo.html" method="get">
+          <label class="visualmente-oculto" for="busqueda">¿Qué estás buscando?</label
+          ><input
+            id="busqueda"
+            name="q"
+            type="search"
+            placeholder="Una mochila, unas llaves…"
+            maxlength="100"
+          /><button class="boton" type="submit">Buscar objeto</button>
+        </form>
+        <div class="acciones">
+          <a
+            class="boton boton--secundario"
+            href="login.html?volver=reportar.html"
+            data-sesion="invitado"
+            >Perdí un objeto</a
+          >
+          <a class="boton boton--secundario" href="reportar.html" data-sesion="activa" hidden
+            >Reportar un objeto perdido</a
+          >
+          <a href="mis-avisos.html" data-sesion="activa" hidden>Ver mis avisos</a>
+          <a href="admin.html" data-rol="admin" hidden>Administrar encontrados</a>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="como-funciona">
+        <h2 id="como-funciona">Volver a encontrar, paso a paso</h2>
+        <ol class="pasos">
+          <li>
+            <strong>Cuéntanos qué perdiste</strong>Describe tu objeto, dónde y cuándo lo viste por
+            última vez.
+          </li>
+          <li>
+            <strong>Revisa las coincidencias</strong>Compara tu búsqueda con los objetos encontrados
+            en el campus.
+          </li>
+          <li>
+            <strong>Recupera tu objeto</strong>El equipo verificará una característica que solo tú
+            conoces.
+          </li>
+        </ol>
+      </section>
+      <section class="seccion" aria-labelledby="ultimos-titulo">
+        <div class="seccion__titulo">
+          <h2 id="ultimos-titulo">Últimos objetos encontrados</h2>
+          <a href="catalogo.html">Ver todo el catálogo</a>
+        </div>
+        <p id="portada-estado" class="mensaje" role="status" aria-live="polite">
+          Cargando objetos…
+        </p>
+        <button id="reintentar-portada" class="boton boton--secundario" type="button" hidden>
+          Reintentar
+        </button>
+        <div id="ultimos-objetos" class="rejilla rejilla--objetos"></div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>

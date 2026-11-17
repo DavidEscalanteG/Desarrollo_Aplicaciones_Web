@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Encuentra y recupera objetos perdidos en tu campus." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Entrar | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/auth.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden><a class="header__enlace" href="admin.html">Admin</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="login.html" aria-current="page">Entrar</a>
+            </li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <div class="auth">
+        <div class="pagina__encabezado">
+          <p class="eyebrow">Tu comunidad, más cerca</p>
+          <h1>Inicia sesión</h1>
+          <p>Consulta tus avisos y continúa buscando lo que perdiste.</p>
+        </div>
+        <div class="panel">
+          <p id="auth-mensaje" class="mensaje" role="status" aria-live="polite" hidden></p>
+          <form id="form-login" method="post">
+            <input type="hidden" name="csrf_token" />
+            <div class="campo">
+              <label for="correo">Correo electrónico</label
+              ><input
+                id="correo"
+                name="correo"
+                type="email"
+                autocomplete="username"
+                maxlength="254"
+                required
+              />
+            </div>
+            <div class="campo">
+              <label for="password">Contraseña</label
+              ><input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                maxlength="128"
+                required
+              />
+            </div>
+            <div class="campo campo--check">
+              <input id="recordar" name="recordar" type="checkbox" /><label for="recordar"
+                >Recordar mi correo en este dispositivo</label
+              >
+            </div>
+            <button class="boton" type="submit">Entrar</button>
+          </form>
+          <p class="auth__pie">
+            ¿Primera vez aquí? <a id="enlace-registro" href="registro.html">Crea tu cuenta</a>
+          </p>
+          <details class="demo" id="cuentas-demo" hidden>
+            <summary>Accesos para la Entrega 1</summary>
+            <p>Usuario: ana@campus.mx · Campus123!</p>
+            <p>Admin: admin@campus.mx · Campus123!</p>
+            <p>
+              Esta es una simulación de navegador. Las cuentas nuevas duran lo que dure esta
+              pestaña. Usa una contraseña de prueba.
+            </p>
+          </details>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>

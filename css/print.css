@@ -1,0 +1,153 @@
+/* Cargar después de las hojas de pantalla en el cartel y en catalogo.html.
+   El catálogo puede marcar su reporte con data-reporte-catalogo y su zona de
+   filtros/paginación con data-no-print; también se admiten tablas existentes. */
+@page {
+  size: A4;
+  margin: 14mm;
+}
+@media print {
+  :root,
+  :root[data-tema='oscuro'] {
+    color-scheme: light;
+  }
+  html,
+  body {
+    display: block !important;
+    min-height: 0;
+    background: white !important;
+    color: black !important;
+    font:
+      11pt/1.4 Arial,
+      sans-serif;
+  }
+  .header,
+  .footer,
+  .saltar,
+  .no-print,
+  [data-no-print],
+  nav,
+  button,
+  .filtros,
+  .buscador,
+  .paginacion,
+  dialog,
+  [role='status'],
+  [role='alert'] {
+    display: none !important;
+  }
+  .contenedor,
+  .principal {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pagina__encabezado {
+    margin: 0 0 6mm;
+  }
+  .cartel {
+    max-width: none;
+    margin: 0;
+    padding: 6mm;
+    border: 2pt solid black;
+    background: white !important;
+    color: black !important;
+    break-inside: avoid;
+  }
+  .cartel__rotulo {
+    font-size: 40pt;
+  }
+  .cartel__titulo {
+    font-size: 22pt;
+    margin-block: 3mm;
+  }
+  .cartel__foto {
+    max-height: 50mm;
+    margin-block: 3mm;
+  }
+  .cartel__datos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin-block: 4mm;
+    font-size: 10pt;
+  }
+  .cartel__descripcion {
+    font-size: 10pt;
+    line-height: 1.3;
+    white-space: pre-wrap;
+  }
+  .cartel__contacto {
+    margin-top: 4mm;
+    padding-top: 3mm;
+    border-color: black;
+    font-size: 10pt;
+  }
+  .panel,
+  .card,
+  .objeto-card,
+  .aviso-card {
+    box-shadow: none;
+    background: white !important;
+    color: black !important;
+    border-color: #888;
+  }
+  .card,
+  .objeto-card,
+  tr,
+  figure,
+  [data-reporte-catalogo] article {
+    break-inside: avoid;
+  }
+  .rejilla,
+  .catalogo__grid {
+    display: block;
+  }
+  .objeto-card {
+    margin-bottom: 5mm;
+  }
+  .objeto-card img {
+    max-height: 35mm;
+    width: auto;
+  }
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    color: black !important;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+  }
+  thead {
+    display: table-header-group;
+  }
+  th,
+  td {
+    border: 1px solid #888;
+    padding: 2mm;
+    text-align: left;
+    color: black !important;
+  }
+  a {
+    color: black !important;
+    text-decoration: none;
+  }
+  .texto-suave,
+  .aviso-card__datos,
+  .badge {
+    color: #333 !important;
+  }
+  img {
+    max-width: 100%;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}

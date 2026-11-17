@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Encuentra y recupera objetos perdidos en tu campus." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Cartel de búsqueda | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/aviso.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden><a class="header__enlace" href="admin.html">Admin</a></li>
+            <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <div class="pagina__encabezado no-print">
+        <h1>Tu cartel de búsqueda</h1>
+        <p>
+          Compártelo en tu campus. Para guardar un PDF, selecciona «Guardar como PDF» en el diálogo
+          de impresión.
+        </p>
+      </div>
+      <div class="acciones no-print">
+        <a class="boton boton--secundario" href="mis-avisos.html">Volver a mis avisos</a
+        ><button class="boton" id="imprimir-aviso" type="button" disabled>
+          Imprimir / guardar PDF</button
+        ><button class="boton boton--secundario" id="descargar-aviso" type="button" disabled>
+          Descargar cartel (.svg)
+        </button>
+      </div>
+      <p id="cartel-mensaje" class="mensaje" role="status" aria-live="polite">Cargando aviso…</p>
+      <article class="cartel" id="cartel" aria-labelledby="cartel-titulo" hidden>
+        <p class="cartel__rotulo">SE BUSCA</p>
+        <h2 class="cartel__titulo" id="cartel-titulo"></h2>
+        <p id="cartel-estado"></p>
+        <img
+          id="cartel-foto"
+          class="cartel__foto"
+          src="assets/img/aviso-sin-foto.svg"
+          alt="Objeto que se está buscando"
+          hidden
+        />
+        <dl class="cartel__datos">
+          <div>
+            <dt>Categoría</dt>
+            <dd id="cartel-categoria"></dd>
+          </div>
+          <div>
+            <dt>Color</dt>
+            <dd id="cartel-color"></dd>
+          </div>
+          <div>
+            <dt>Última ubicación</dt>
+            <dd id="cartel-ubicacion"></dd>
+          </div>
+          <div>
+            <dt>Fecha de pérdida</dt>
+            <dd id="cartel-fecha"></dd>
+          </div>
+        </dl>
+        <p id="cartel-descripcion" class="cartel__descripcion"></p>
+        <div class="cartel__contacto">
+          <p><strong>¿Lo encontraste?</strong></p>
+          <p>Entrégalo al personal de objetos perdidos del campus.</p>
+          <p>Indica el aviso <strong id="cartel-referencia"></strong>.</p>
+          <p class="texto-suave">Objetos Perdidos Campus · Ayúdanos a que vuelva a casa.</p>
+        </div>
+      </article>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>
