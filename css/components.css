@@ -233,3 +233,11 @@
     padding: var(--espacio-md);
   }
 }
+
+/* Catálogo: campos cortos para que en celular quepan de dos en dos */
+.filtros .campo--corto {
+  flex: 1 1 8rem;
+}
+.filtros .campo--ancho {
+  flex-basis: 100%;
+}
