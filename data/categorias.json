@@ -1,0 +1,12 @@
+[
+  { "id": 1, "nombre": "Mochilas y bolsas" },
+  { "id": 2, "nombre": "Botellas y termos" },
+  { "id": 3, "nombre": "Cuadernos y libros" },
+  { "id": 4, "nombre": "Llaves" },
+  { "id": 5, "nombre": "Electrónicos" },
+  { "id": 6, "nombre": "Paraguas" },
+  { "id": 7, "nombre": "Ropa y accesorios" },
+  { "id": 8, "nombre": "Documentos e identificaciones" },
+  { "id": 9, "nombre": "Carteras y monederos" },
+  { "id": 10, "nombre": "Útiles escolares" }
+]

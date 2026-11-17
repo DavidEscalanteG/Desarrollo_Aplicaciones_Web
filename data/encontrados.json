@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1, "nombre": "Mochila azul marino",
+    "id_categoria": 1, "id_ubicacion": 1, "fecha_hallazgo": "2026-11-11", "color": "Azul marino",
+    "descripcion": "Mochila de tela con dos compartimentos y un llavero de estrella. Tenía cuadernos dentro y estaba junto a las mesas de estudio.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 2, "nombre": "Botella térmica plateada",
+    "id_categoria": 2, "id_ubicacion": 2, "fecha_hallazgo": "2026-11-12", "color": "Plateado",
+    "descripcion": "Botella de acero de unos 750 ml con tapa negra y una abolladura pequeña en la base.",
+    "foto": "", "estado": "reclamado"
+  },
+  {
+    "id": 3, "nombre": "Cuaderno profesional verde",
+    "id_categoria": 3, "id_ubicacion": 3, "fecha_hallazgo": "2026-11-07", "color": "Verde",
+    "descripcion": "Cuaderno de cuadros con espiral negro y una etiqueta blanca en la portada. Tiene apuntes de cálculo.",
+    "foto": "", "estado": "entregado"
+  },
+  {
+    "id": 4, "nombre": "Llaves con llavero de tela",
+    "id_categoria": 4, "id_ubicacion": 2, "fecha_hallazgo": "2026-11-13", "color": "Naranja",
+    "descripcion": "Tres llaves pequeñas en un aro metálico con un llavero de tela. Estaban sobre una mesa de la cafetería.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 5, "nombre": "Audífonos inalámbricos blancos",
+    "id_categoria": 5, "id_ubicacion": 5, "fecha_hallazgo": "2026-11-14", "color": "Blanco",
+    "descripcion": "Audífonos en estuche de tapa redondeada. Se quedaron junto a un equipo de la tercera fila.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 6, "nombre": "Calculadora científica",
+    "id_categoria": 10, "id_ubicacion": 9, "fecha_hallazgo": "2026-11-10", "color": "Gris",
+    "descripcion": "Calculadora científica con tapa deslizable y una pila de repuesto pegada con cinta en la parte trasera.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 7, "nombre": "Credencial de estudiante",
+    "id_categoria": 8, "id_ubicacion": 10, "fecha_hallazgo": "2026-11-05", "color": "Blanco",
+    "descripcion": "Credencial universitaria dentro de una funda transparente con cordón. Se entrega presentando otra identificación.",
+    "foto": "", "estado": "entregado"
+  },
+  {
+    "id": 8, "nombre": "Sudadera gris con capucha",
+    "id_categoria": 7, "id_ubicacion": 7, "fecha_hallazgo": "2026-11-08", "color": "Gris",
+    "descripcion": "Sudadera talla M con capucha y bolsa frontal. Estaba doblada en las gradas de la cancha de básquetbol.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 9, "nombre": "Paraguas negro automático",
+    "id_categoria": 6, "id_ubicacion": 8, "fecha_hallazgo": "2026-11-03", "color": "Negro",
+    "descripcion": "Paraguas de apertura automática con mango curvo de plástico. Se encontró en la última fila de butacas.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 10, "nombre": "Cartera café de piel",
+    "id_categoria": 9, "id_ubicacion": 4, "fecha_hallazgo": "2026-11-09", "color": "Café",
+    "descripcion": "Cartera de piel con broche de presión. No tenía efectivo; conserva varias tarjetas.",
+    "foto": "", "estado": "reclamado"
+  },
+  {
+    "id": 11, "nombre": "Cargador de laptop USB-C",
+    "id_categoria": 5, "id_ubicacion": 5, "fecha_hallazgo": "2026-11-15", "color": "Negro",
+    "descripcion": "Cargador de 65 W con cable USB-C enrollado y sujeto con una liga. Seguía conectado a un contacto.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 12, "nombre": "Termo rosa con stickers",
+    "id_categoria": 2, "id_ubicacion": 7, "fecha_hallazgo": "2026-11-06", "color": "Rosa",
+    "descripcion": "Termo de plástico de un litro con popote y varios stickers de caricaturas en el costado.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 13, "nombre": "Lentes graduados en estuche",
+    "id_categoria": 7, "id_ubicacion": 8, "fecha_hallazgo": "2026-10-30", "color": "Negro",
+    "descripcion": "Lentes de armazón delgado dentro de un estuche rígido azul con paño de limpieza.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 14, "nombre": "Libro de cálculo diferencial",
+    "id_categoria": 3, "id_ubicacion": 1, "fecha_hallazgo": "2026-11-04", "color": "Azul",
+    "descripcion": "Libro de texto con forro de plástico y un separador de cartón en el capítulo de derivadas.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 15, "nombre": "Estuche de lápices morado",
+    "id_categoria": 10, "id_ubicacion": 3, "fecha_hallazgo": "2026-11-12", "color": "Morado",
+    "descripcion": "Estuche de tela con cierre. Contiene plumas, corrector y una regla de 15 cm.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 16, "nombre": "Memoria USB plateada",
+    "id_categoria": 5, "id_ubicacion": 9, "fecha_hallazgo": "2026-11-14", "color": "Plateado",
+    "descripcion": "Memoria USB metálica de 32 GB con argolla para llavero. Estaba conectada a una computadora del laboratorio.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 17, "nombre": "Gorra azul de béisbol",
+    "id_categoria": 7, "id_ubicacion": 6, "fecha_hallazgo": "2026-11-01", "color": "Azul",
+    "descripcion": "Gorra con broche ajustable y visera curva. Se quedó sobre una banca de la explanada.",
+    "foto": "", "estado": "disponible"
+  },
+  {
+    "id": 18, "nombre": "Mochila deportiva negra",
+    "id_categoria": 1, "id_ubicacion": 7, "fecha_hallazgo": "2026-10-28", "color": "Negro",
+    "descripcion": "Mochila con compartimento para tenis y una toalla dentro. Estaba a un costado de la cancha de fútbol.",
+    "foto": "", "estado": "disponible"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  { "id": 1, "nombre": "Biblioteca" },
+  { "id": 2, "nombre": "Cafetería" },
+  { "id": 3, "nombre": "Aulas del edificio A" },
+  { "id": 4, "nombre": "Estacionamiento" },
+  { "id": 5, "nombre": "Centro de cómputo" },
+  { "id": 6, "nombre": "Explanada central" },
+  { "id": 7, "nombre": "Canchas deportivas" },
+  { "id": 8, "nombre": "Auditorio" },
+  { "id": 9, "nombre": "Laboratorios" },
+  { "id": 10, "nombre": "Control escolar" }
+]
