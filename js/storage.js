@@ -73,3 +73,40 @@ export function clearDraft(clave = CLAVES.borradorAviso) {
     // Sin almacenamiento disponible: nada que borrar.
   }
 }
+
+/**
+ * Recupera el tema de localStorage o, como respaldo, de la cookie.
+ * @returns {'claro'|'oscuro'}
+ */
+export function getTheme() {
+  let tema;
+  try {
+    tema = localStorage.getItem(CLAVES.tema);
+  } catch {
+    // El almacenamiento puede estar deshabilitado en el navegador.
+  }
+  if (!['claro', 'oscuro'].includes(tema)) {
+    try {
+      tema = getCookie(CLAVES.tema);
+    } catch {
+      tema = null;
+    }
+  }
+  return tema === 'oscuro' ? 'oscuro' : 'claro';
+}
+
+/**
+ * Guarda el tema en los dos mecanismos de persistencia acordados.
+ * @param {string} tema
+ * @returns {'claro'|'oscuro'} Tema normalizado.
+ */
+export function setTheme(tema) {
+  const valor = tema === 'oscuro' ? 'oscuro' : 'claro';
+  try {
+    localStorage.setItem(CLAVES.tema, valor);
+  } catch {
+    // La cookie permite conservar la preferencia sin localStorage.
+  }
+  setCookie(CLAVES.tema, valor);
+  return valor;
+}

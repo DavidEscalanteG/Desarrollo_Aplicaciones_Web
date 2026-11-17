@@ -154,3 +154,18 @@ async function eliminar(recurso, id) {
 }
 
 export const api = { get, post, put, delete: eliminar };
+
+/**
+ * Consulta los catálogos usados por los formularios.
+ * @returns {Promise<{categorias: object[], ubicaciones: object[]}>}
+ */
+export async function cargarCatalogos() {
+  const [categorias, ubicaciones] = await Promise.all([get('categorias'), get('ubicaciones')]);
+  if (!Array.isArray(categorias) || !Array.isArray(ubicaciones)) {
+    throw new ApiError('Los catálogos tienen un formato inválido.', 0);
+  }
+  if (!categorias.length || !ubicaciones.length) {
+    throw new ApiError('Se necesita al menos una categoría y una ubicación.', 0);
+  }
+  return { categorias, ubicaciones };
+}

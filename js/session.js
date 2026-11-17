@@ -90,14 +90,55 @@ export function getCsrfToken() {
  */
 export function renderHeader(raiz = document) {
   const sesion = getSession();
-  raiz.querySelectorAll('[data-sesion="invitado"]').forEach((el) => { el.hidden = Boolean(sesion); });
-  raiz.querySelectorAll('[data-sesion="activa"]').forEach((el) => { el.hidden = !sesion; });
-  raiz.querySelectorAll('[data-rol]').forEach((el) => { el.hidden = !sesion || sesion.rol !== el.dataset.rol; });
-  raiz.querySelectorAll('[data-nombre-usuario]').forEach((el) => { el.textContent = sesion ? sesion.nombre : ''; });
+  raiz.querySelectorAll('[data-sesion="invitado"]').forEach((el) => {
+    el.hidden = Boolean(sesion);
+  });
+  raiz.querySelectorAll('[data-sesion="activa"]').forEach((el) => {
+    el.hidden = !sesion;
+  });
+  raiz.querySelectorAll('[data-rol]').forEach((el) => {
+    el.hidden = !sesion || sesion.rol !== el.dataset.rol;
+  });
+  raiz.querySelectorAll('[data-nombre-usuario]').forEach((el) => {
+    el.textContent = sesion ? sesion.nombre : '';
+  });
   raiz.querySelectorAll('[data-logout]').forEach((el) => {
     el.addEventListener('click', () => {
       logout();
       location.href = 'index.html';
     });
   });
+}
+
+const PAGINAS = new Set([
+  'index.html',
+  'catalogo.html',
+  'reportar.html',
+  'resultados.html',
+  'mis-avisos.html',
+  'admin.html',
+  'aviso-imprimible.html',
+  'prueba.html'
+]);
+
+/**
+ * Acepta exclusivamente páginas conocidas del mismo directorio y origen.
+ * @param {string|null} valor Destino solicitado en el parámetro volver.
+ * @param {string} [base] URL actual usada para resolver el destino.
+ * @returns {string} Página local segura o index.html.
+ */
+export function destinoLocal(valor, base = location.href) {
+  if (typeof valor !== 'string' || /[\s\\:\x00-\x1f\x7f]/.test(valor) || valor.includes('//'))
+    return 'index.html';
+  const ruta = valor.split(/[?#]/, 1)[0];
+  if (!PAGINAS.has(ruta)) return 'index.html';
+  try {
+    const origen = new URL(base);
+    const destino = new URL(valor, origen);
+    if (destino.origin !== origen.origin || destino.pathname !== new URL(ruta, origen).pathname)
+      return 'index.html';
+    return `${ruta}${destino.search}${destino.hash}`;
+  } catch {
+    return 'index.html';
+  }
 }

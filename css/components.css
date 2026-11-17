@@ -1,0 +1,235 @@
+/* Componentes reutilizables: botones, formularios, tarjetas, diálogo y cartel. */
+
+.panel,
+.aviso-card,
+.objeto-card {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: var(--espacio-lg);
+}
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  gap: var(--espacio-sm);
+  padding: var(--espacio-sm) var(--espacio-md);
+  border: 1px solid var(--color-primario);
+  border-radius: var(--radio);
+  background: var(--color-primario);
+  color: var(--color-sobre-primario);
+  font-weight: 600;
+  text-decoration: none;
+}
+.boton:hover {
+  background: var(--color-primario-hover);
+  color: var(--color-sobre-primario);
+}
+.boton--secundario {
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  border-color: var(--color-borde);
+}
+.boton--secundario:hover {
+  background: var(--color-fondo);
+  color: var(--color-primario);
+}
+.boton--peligro {
+  color: var(--color-error);
+  background: var(--color-superficie);
+  border-color: var(--color-error);
+}
+.boton:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+.campo {
+  display: grid;
+  gap: var(--espacio-xs);
+  margin-bottom: var(--espacio-md);
+  min-width: 0;
+}
+.campo label,
+.campo__etiqueta {
+  font-weight: 600;
+}
+.campo input:not([type='checkbox']),
+.campo select,
+.campo textarea,
+.buscador input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: var(--espacio-sm);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+}
+.campo textarea {
+  resize: vertical;
+}
+.campo small {
+  color: var(--color-texto-suave);
+}
+.campo--check {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-sm);
+}
+.campo--check input {
+  width: 20px;
+  height: 20px;
+}
+.editor__ayuda {
+  margin-bottom: var(--espacio-md);
+}
+.mensaje {
+  margin-block: var(--espacio-md);
+  border-left: 3px solid var(--color-primario);
+  background: var(--color-superficie);
+  padding: var(--espacio-md);
+  overflow-wrap: anywhere;
+}
+.mensaje--error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+.demo {
+  margin-top: var(--espacio-lg);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+.demo summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.demo p {
+  margin-top: var(--espacio-sm);
+  overflow-wrap: anywhere;
+}
+.objeto-card img {
+  width: 100%;
+  height: 11rem;
+  object-fit: contain;
+  margin-bottom: var(--espacio-md);
+  background: var(--color-fondo);
+  border-radius: var(--radio);
+}
+.objeto-card p,
+.aviso-card p {
+  margin-bottom: var(--espacio-sm);
+  overflow-wrap: anywhere;
+}
+.aviso-card h2,
+.objeto-card h3 {
+  overflow-wrap: anywhere;
+}
+.aviso-card__cabecera {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--espacio-md);
+}
+.badge {
+  display: inline-block;
+  font-size: var(--texto-sm);
+  padding: var(--espacio-xs) var(--espacio-sm);
+  background: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  white-space: nowrap;
+}
+.aviso-card__datos {
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+.aviso-card__acciones {
+  margin-top: var(--espacio-md);
+}
+.preview {
+  max-width: 15rem;
+  max-height: 12rem;
+  object-fit: contain;
+  margin-bottom: var(--espacio-md);
+}
+.dialogo {
+  width: min(92vw, 30rem);
+  margin: auto;
+  padding: var(--espacio-lg);
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+.dialogo::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}
+.dialogo p {
+  margin-bottom: var(--espacio-lg);
+}
+.cartel {
+  max-width: 46rem;
+  margin: var(--espacio-lg) auto;
+  padding: var(--espacio-xl);
+  border: 2px solid var(--color-texto);
+  background: var(--color-superficie);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.cartel__rotulo {
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.cartel__titulo {
+  font-size: var(--texto-xl);
+  margin-block: var(--espacio-md);
+}
+.cartel__foto {
+  width: 100%;
+  max-height: 18rem;
+  object-fit: contain;
+  margin: var(--espacio-lg) auto;
+}
+.cartel__datos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-md);
+  text-align: left;
+  margin-block: var(--espacio-lg);
+}
+.cartel__datos dt {
+  font-weight: 700;
+}
+.cartel__descripcion {
+  white-space: pre-wrap;
+  text-align: left;
+}
+.cartel__contacto {
+  margin-top: var(--espacio-lg);
+  border-top: 1px solid var(--color-borde);
+  padding-top: var(--espacio-lg);
+}
+
+@media (min-width: 768px) {
+  .cartel__datos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .panel,
+  .aviso-card,
+  .objeto-card {
+    padding: var(--espacio-md);
+  }
+  .aviso-card__cabecera {
+    flex-direction: column;
+    gap: var(--espacio-xs);
+    margin-bottom: var(--espacio-sm);
+  }
+  .cartel {
+    padding: var(--espacio-md);
+  }
+}

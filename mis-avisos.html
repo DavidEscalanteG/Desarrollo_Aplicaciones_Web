@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Encuentra y recupera objetos perdidos en tu campus." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Mis avisos | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/misAvisos.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html" aria-current="page">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden><a class="header__enlace" href="admin.html">Admin</a></li>
+            <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <div class="pagina__encabezado">
+        <p class="eyebrow">Tu búsqueda continúa</p>
+        <h1>Mis avisos</h1>
+        <p>
+          Actualiza los detalles, imprime un cartel o cierra un aviso cuando recuperes tu objeto.
+        </p>
+      </div>
+      <p id="avisos-mensaje" class="mensaje" role="status" aria-live="polite">
+        Cargando tus avisos…
+      </p>
+      <div class="acciones">
+        <button class="boton" id="nuevo-aviso" type="button" disabled>Crear aviso</button
+        ><a href="reportar.html">Buscar coincidencias primero</a
+        ><button class="boton boton--secundario" id="recargar-avisos" type="button">
+          Actualizar datos
+        </button>
+      </div>
+      <section class="panel seccion" id="editor-aviso" aria-labelledby="editor-titulo" hidden>
+        <h2 id="editor-titulo" tabindex="-1">Crear aviso</h2>
+        <p class="texto-suave editor__ayuda">
+          Todos los campos son obligatorios salvo la foto. La característica oculta nunca se incluye
+          en el cartel.
+        </p>
+        <p id="editor-mensaje" class="mensaje" role="status" aria-live="polite" hidden></p>
+        <form id="form-aviso" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="csrf_token" />
+          <div class="campo">
+            <label for="titulo">Título</label
+            ><input id="titulo" name="titulo" minlength="3" maxlength="100" required />
+          </div>
+          <div class="formulario__rejilla">
+            <div class="campo">
+              <label for="id_categoria">Categoría</label
+              ><select id="id_categoria" name="id_categoria" required>
+                <option value="">Cargando categorías…</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="id_ubicacion">Última ubicación</label
+              ><select id="id_ubicacion" name="id_ubicacion" required>
+                <option value="">Cargando ubicaciones…</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="fecha_perdida">Fecha de pérdida</label
+              ><input id="fecha_perdida" name="fecha_perdida" type="date" required />
+            </div>
+            <div class="campo">
+              <label for="color">Color</label
+              ><input id="color" name="color" minlength="2" maxlength="40" required />
+            </div>
+          </div>
+          <div class="campo">
+            <label for="descripcion">Descripción pública</label
+            ><textarea
+              id="descripcion"
+              name="descripcion"
+              rows="4"
+              minlength="10"
+              maxlength="1000"
+              required
+            ></textarea>
+          </div>
+          <div class="campo">
+            <label for="caracteristica_oculta">Característica oculta</label
+            ><textarea
+              id="caracteristica_oculta"
+              name="caracteristica_oculta"
+              rows="2"
+              minlength="5"
+              maxlength="300"
+              aria-describedby="oculta-ayuda"
+              required
+            ></textarea
+            ><small id="oculta-ayuda"
+              >Un detalle que permita verificar que es tuyo. Evita contraseñas y datos
+              personales.</small
+            >
+          </div>
+          <div class="campo">
+            <label for="foto">Foto de referencia (opcional)</label
+            ><input
+              id="foto"
+              name="foto"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              aria-describedby="foto-ayuda"
+            /><small id="foto-ayuda">JPG, PNG o WebP, hasta 2 MB.</small>
+          </div>
+          <img
+            id="foto-preview"
+            class="preview"
+            src="assets/img/aviso-sin-foto.svg"
+            alt="Vista previa de tu objeto"
+            hidden
+          /><button id="quitar-foto" class="boton boton--secundario" type="button" hidden>
+            Quitar foto
+          </button>
+          <div class="acciones seccion">
+            <button id="guardar-aviso" class="boton" type="submit">Guardar aviso</button
+            ><button id="cancelar-edicion" class="boton boton--secundario" type="button">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="seccion" aria-label="Lista de tus avisos">
+        <div class="filtros">
+          <div class="campo">
+            <label for="buscar-avisos">Buscar en mis avisos</label
+            ><input
+              id="buscar-avisos"
+              type="search"
+              placeholder="Título, descripción, color…"
+              maxlength="100"
+            />
+          </div>
+          <div class="campo">
+            <label for="filtrar-estado">Estado</label
+            ><select id="filtrar-estado">
+              <option value="">Todos</option>
+              <option value="activo">Activos</option>
+              <option value="coincidencia">Con coincidencia</option>
+              <option value="cerrado">Cerrados</option>
+            </select>
+          </div>
+        </div>
+        <p id="avisos-conteo" class="texto-suave" role="status" aria-live="polite"></p>
+        <div id="lista-avisos" class="rejilla seccion"></div>
+      </section>
+      <dialog id="confirmacion" class="dialogo" aria-labelledby="confirmacion-titulo">
+        <h2 id="confirmacion-titulo">Confirmar acción</h2>
+        <p id="confirmacion-texto"></p>
+        <form method="dialog" class="acciones">
+          <button class="boton boton--secundario" type="submit" value="cancelar" autofocus>
+            Cancelar</button
+          ><button class="boton boton--peligro" type="submit" value="confirmar">Confirmar</button>
+        </form>
+      </dialog>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>
