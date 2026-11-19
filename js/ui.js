@@ -62,6 +62,19 @@ export function obtenerNombreCatalogo(lista, id, tipo) {
 }
 
 /**
+ * Pasa a minúsculas y quita acentos para comparar textos.
+ * @param {string} texto
+ * @returns {string}
+ */
+export function normalizar(texto) {
+  return String(texto ?? '')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+/**
  * Arma la tarjeta de un objeto encontrado (foto, nombre, categoría, lugar y fecha).
  * @param {object} objeto Registro de encontrados.
  * @param {{categorias: object[], ubicaciones: object[]}} catalogos
