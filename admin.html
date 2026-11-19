@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Administración de objetos encontrados y catálogos." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Administración | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/admin.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden>
+              <a class="header__enlace" href="admin.html" aria-current="page">Admin</a>
+            </li>
+            <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <div class="pagina__encabezado">
+        <p class="eyebrow">Administración</p>
+        <h1>Objetos encontrados</h1>
+        <p>Registra lo que llega a la oficina, actualiza su estado y administra los catálogos.</p>
+      </div>
+      <p id="admin-mensaje" class="mensaje" role="status" aria-live="polite">Cargando datos…</p>
+      <button id="reintentar" class="boton boton--secundario" type="button" hidden>
+        Reintentar
+      </button>
+
+      <section class="seccion" aria-labelledby="objetos-titulo">
+        <div class="seccion__titulo">
+          <h2 id="objetos-titulo">Inventario</h2>
+          <button id="nuevo-objeto" class="boton" type="button" disabled>Registrar objeto</button>
+        </div>
+
+        <section class="panel seccion" id="editor-objeto" aria-labelledby="editor-titulo" hidden>
+          <h2 id="editor-titulo" tabindex="-1">Registrar objeto</h2>
+          <p class="texto-suave editor__ayuda">Todos los campos son obligatorios salvo la foto.</p>
+          <p id="editor-mensaje" class="mensaje" role="status" aria-live="polite" hidden></p>
+          <form id="form-objeto" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" />
+            <div class="campo">
+              <label for="nombre">Nombre del objeto</label
+              ><input id="nombre" name="nombre" minlength="3" maxlength="100" required />
+            </div>
+            <div class="formulario__rejilla">
+              <div class="campo">
+                <label for="id_categoria">Categoría</label
+                ><select id="id_categoria" name="id_categoria" required>
+                  <option value="">Cargando categorías…</option>
+                </select>
+              </div>
+              <div class="campo">
+                <label for="id_ubicacion">Dónde se encontró</label
+                ><select id="id_ubicacion" name="id_ubicacion" required>
+                  <option value="">Cargando ubicaciones…</option>
+                </select>
+              </div>
+              <div class="campo">
+                <label for="fecha_hallazgo">Fecha de hallazgo</label
+                ><input id="fecha_hallazgo" name="fecha_hallazgo" type="date" required />
+              </div>
+              <div class="campo">
+                <label for="color">Color</label
+                ><input id="color" name="color" minlength="2" maxlength="40" required />
+              </div>
+              <div class="campo">
+                <label for="estado">Estado</label
+                ><select id="estado" name="estado" required>
+                  <option value="disponible">Disponible</option>
+                  <option value="reclamado">Reclamado</option>
+                  <option value="entregado">Entregado</option>
+                </select>
+              </div>
+            </div>
+            <div class="campo">
+              <label for="descripcion">Descripción pública</label
+              ><textarea
+                id="descripcion"
+                name="descripcion"
+                rows="3"
+                minlength="10"
+                maxlength="1000"
+                aria-describedby="descripcion-ayuda"
+                required
+              ></textarea
+              ><small id="descripcion-ayuda"
+                >No incluyas detalles que solo conozca el dueño; sirven para validar la
+                reclamación.</small
+              >
+            </div>
+            <div class="campo">
+              <label for="foto">Foto (opcional)</label
+              ><input
+                id="foto"
+                name="foto"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                aria-describedby="foto-ayuda"
+              /><small id="foto-ayuda">JPG, PNG o WebP, hasta 2 MB.</small>
+            </div>
+            <img
+              id="foto-preview"
+              class="preview"
+              src="assets/img/aviso-sin-foto.svg"
+              alt="Vista previa del objeto"
+              hidden
+            /><button id="quitar-foto" class="boton boton--secundario" type="button" hidden>
+              Quitar foto
+            </button>
+            <div class="acciones seccion">
+              <button id="guardar-objeto" class="boton" type="submit">Guardar</button
+              ><button id="cancelar-edicion" class="boton boton--secundario" type="button">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <div class="filtros">
+          <div class="campo">
+            <label for="buscar-objetos">Buscar</label
+            ><input
+              id="buscar-objetos"
+              type="search"
+              placeholder="Nombre, color, categoría…"
+              maxlength="100"
+            />
+          </div>
+          <div class="campo">
+            <label for="filtrar-estado">Estado</label
+            ><select id="filtrar-estado">
+              <option value="">Todos</option>
+              <option value="disponible">Disponibles</option>
+              <option value="reclamado">Reclamados</option>
+              <option value="entregado">Entregados</option>
+            </select>
+          </div>
+        </div>
+        <p id="objetos-conteo" class="texto-suave" role="status" aria-live="polite"></p>
+        <div class="tabla-contenedor">
+          <table class="tabla">
+            <caption class="visualmente-oculto">
+              Objetos encontrados registrados
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Foto</th>
+                <th scope="col">Objeto</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Ubicación</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-objetos"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="seccion" aria-labelledby="catalogos-titulo">
+        <h2 id="catalogos-titulo">Categorías y ubicaciones</h2>
+        <div class="catalogos">
+          <div class="panel">
+            <h3>Categorías</h3>
+            <p id="categorias-mensaje" class="mensaje" role="status" aria-live="polite" hidden></p>
+            <form id="form-categorias">
+              <input type="hidden" name="csrf_token" />
+              <div class="campo">
+                <label for="nombre-categoria">Nueva categoría</label
+                ><input id="nombre-categoria" name="nombre" minlength="3" maxlength="60" required />
+              </div>
+              <div class="acciones">
+                <button class="boton" type="submit">Agregar</button
+                ><button class="boton boton--secundario" type="button" data-cancelar hidden>
+                  Cancelar
+                </button>
+              </div>
+            </form>
+            <ul id="lista-categorias" class="lista-catalogo"></ul>
+          </div>
+          <div class="panel">
+            <h3>Ubicaciones</h3>
+            <p id="ubicaciones-mensaje" class="mensaje" role="status" aria-live="polite" hidden></p>
+            <form id="form-ubicaciones">
+              <input type="hidden" name="csrf_token" />
+              <div class="campo">
+                <label for="nombre-ubicacion">Nueva ubicación</label
+                ><input id="nombre-ubicacion" name="nombre" minlength="3" maxlength="60" required />
+              </div>
+              <div class="acciones">
+                <button class="boton" type="submit">Agregar</button
+                ><button class="boton boton--secundario" type="button" data-cancelar hidden>
+                  Cancelar
+                </button>
+              </div>
+            </form>
+            <ul id="lista-ubicaciones" class="lista-catalogo"></ul>
+          </div>
+        </div>
+      </section>
+
+      <dialog id="confirmacion" class="dialogo" aria-labelledby="confirmacion-titulo">
+        <h2 id="confirmacion-titulo">Confirmar acción</h2>
+        <p id="confirmacion-texto"></p>
+        <form method="dialog" class="acciones">
+          <button class="boton boton--secundario" type="submit" value="cancelar" autofocus>
+            Cancelar</button
+          ><button class="boton boton--peligro" type="submit" value="confirmar">Confirmar</button>
+        </form>
+      </dialog>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>

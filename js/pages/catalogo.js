@@ -8,7 +8,8 @@ import {
   mostrarMensaje,
   llenarSelect,
   obtenerNombreCatalogo,
-  crearTarjetaObjeto
+  crearTarjetaObjeto,
+  normalizar
 } from '../ui.js';
 
 iniciarPagina();
@@ -27,19 +28,6 @@ const etiquetaRecientes = recientes.firstElementChild;
 
 let objetos = [];
 let catalogos = { categorias: [], ubicaciones: [] };
-
-/**
- * Pasa a minúsculas y quita acentos para comparar textos.
- * @param {string} texto
- * @returns {string}
- */
-function normalizar(texto) {
-  return String(texto ?? '')
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .trim();
-}
 
 /**
  * Texto donde se busca: nombre, color, descripción, categoría y ubicación.
