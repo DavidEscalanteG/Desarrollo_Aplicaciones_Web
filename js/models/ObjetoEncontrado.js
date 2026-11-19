@@ -4,7 +4,9 @@ const ESTADOS = ['disponible', 'reclamado', 'entregado'];
 const limpiar = (valor) => (typeof valor === 'string' ? valor.trim() : '');
 const esId = (valor) => Number.isSafeInteger(Number(valor)) && Number(valor) > 0;
 
+/** Objeto encontrado en el campus. */
 export class ObjetoEncontrado {
+  /** @param {object} [datos={}] Campos del contrato de encontrados. */
   constructor(datos = {}) {
     if (datos.id !== undefined && datos.id !== '') this.id = Number(datos.id);
     this.nombre = limpiar(datos.nombre);
@@ -17,6 +19,7 @@ export class ObjetoEncontrado {
     this.estado = datos.estado || 'disponible';
   }
 
+  /** @returns {Object<string, string>} Errores por campo; vacío si es válido. */
   validar() {
     const errores = {};
     if (this.id !== undefined && !esId(this.id)) errores.id = 'Identificador inválido.';
@@ -35,10 +38,12 @@ export class ObjetoEncontrado {
     return errores;
   }
 
+  /** @returns {boolean} */
   esValido() {
     return Object.keys(this.validar()).length === 0;
   }
 
+  /** @returns {object} Datos listos para guardar; lanza error si algo es inválido. */
   toJSON() {
     const errores = Object.values(this.validar());
     if (errores.length) throw new Error(errores.join(' '));
