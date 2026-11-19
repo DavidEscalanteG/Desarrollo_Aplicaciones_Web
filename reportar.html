@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Reporta un objeto perdido en el campus y busca coincidencias." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Reportar objeto perdido | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/reportar.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html" aria-current="page">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden><a class="header__enlace" href="admin.html">Admin</a></li>
+            <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <div class="pagina__encabezado">
+        <p class="eyebrow">Ficha de objeto perdido</p>
+        <h1>Reportar objeto perdido</h1>
+        <p>
+          Describe tu objeto y buscaremos coincidencias entre lo que ya se encontró en el campus. Si
+          aún no aparece, tu aviso queda activo.
+        </p>
+      </div>
+      <p id="reportar-mensaje" class="mensaje" role="status" aria-live="polite">
+        Cargando catálogos…
+      </p>
+      <form id="form-reportar" class="panel" method="post" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="csrf_token" />
+        <div class="campo">
+          <label for="titulo">¿Qué perdiste?</label
+          ><input
+            id="titulo"
+            name="titulo"
+            minlength="3"
+            maxlength="100"
+            placeholder="Ej. Mochila azul con cuadernos"
+            aria-describedby="error-titulo"
+            required
+          /><small id="error-titulo" class="campo__error" hidden></small>
+        </div>
+        <div class="formulario__rejilla">
+          <div class="campo">
+            <label for="id_categoria">Categoría</label
+            ><select id="id_categoria" name="id_categoria" aria-describedby="error-id_categoria" required>
+              <option value="">Cargando categorías…</option></select
+            ><small id="error-id_categoria" class="campo__error" hidden></small>
+          </div>
+          <div class="campo">
+            <label for="id_ubicacion">¿Dónde lo viste por última vez?</label
+            ><select id="id_ubicacion" name="id_ubicacion" aria-describedby="error-id_ubicacion" required>
+              <option value="">Cargando ubicaciones…</option></select
+            ><small id="error-id_ubicacion" class="campo__error" hidden></small>
+          </div>
+          <div class="campo">
+            <label for="fecha_perdida">Fecha en que lo perdiste</label
+            ><input
+              id="fecha_perdida"
+              name="fecha_perdida"
+              type="date"
+              aria-describedby="error-fecha_perdida"
+              required
+            /><small id="error-fecha_perdida" class="campo__error" hidden></small>
+          </div>
+          <div class="campo">
+            <label for="color">Color principal</label
+            ><input
+              id="color"
+              name="color"
+              minlength="2"
+              maxlength="40"
+              aria-describedby="error-color"
+              required
+            /><small id="error-color" class="campo__error" hidden></small>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="descripcion">Descripción pública</label
+          ><textarea
+            id="descripcion"
+            name="descripcion"
+            rows="4"
+            minlength="10"
+            maxlength="1000"
+            placeholder="Marca, tamaño, estado, qué contenía…"
+            aria-describedby="error-descripcion"
+            required
+          ></textarea
+          ><small id="error-descripcion" class="campo__error" hidden></small>
+        </div>
+        <div class="campo">
+          <label for="caracteristica_oculta">Característica oculta</label
+          ><textarea
+            id="caracteristica_oculta"
+            name="caracteristica_oculta"
+            rows="2"
+            minlength="5"
+            maxlength="300"
+            aria-describedby="oculta-ayuda error-caracteristica_oculta"
+            required
+          ></textarea
+          ><small id="oculta-ayuda"
+            >Un detalle que solo tú conoces. El administrador lo usará para verificar que es tuyo;
+            nunca se publica.</small
+          ><small id="error-caracteristica_oculta" class="campo__error" hidden></small>
+        </div>
+        <div class="campo">
+          <span class="campo__etiqueta" id="foto-etiqueta">Foto de referencia (opcional)</span>
+          <label class="zona-arrastre" id="zona-arrastre" for="foto">
+            <span class="zona-arrastre__texto">Arrastra una foto aquí o haz clic para elegirla</span>
+            <small>JPG, PNG o WebP, hasta 2 MB.</small>
+            <input
+              id="foto"
+              name="foto"
+              class="visualmente-oculto"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              aria-labelledby="foto-etiqueta"
+              aria-describedby="error-foto"
+            />
+          </label>
+          <small id="error-foto" class="campo__error" hidden></small>
+        </div>
+        <img
+          id="foto-preview"
+          class="preview"
+          src="assets/img/aviso-sin-foto.svg"
+          alt="Vista previa de tu objeto"
+          hidden
+        />
+        <div class="acciones">
+          <button id="quitar-foto" class="boton boton--secundario" type="button" hidden>
+            Quitar foto
+          </button>
+        </div>
+        <p id="borrador-estado" class="texto-suave" role="status" aria-live="polite"></p>
+        <div class="acciones seccion">
+          <button id="enviar" class="boton" type="submit" disabled>Buscar coincidencias</button
+          ><button id="descartar" class="boton boton--secundario" type="button">
+            Descartar borrador
+          </button>
+        </div>
+      </form>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>
