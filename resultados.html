@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Coincidencias entre tu objeto perdido y lo encontrado en el campus." />
+    <link rel="icon" href="assets/img/aviso-sin-foto.svg" type="image/svg+xml" />
+    <title>Resultados | Objetos Perdidos Campus</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/print.css" />
+    <script type="module" src="js/pages/resultados.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <div class="contenedor header__barra">
+        <a class="header__marca" href="index.html">Objetos Perdidos</a>
+        <nav aria-label="Principal">
+          <ul class="header__nav">
+            <li><a class="header__enlace" href="catalogo.html">Catálogo</a></li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="reportar.html">Reportar</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <a class="header__enlace" href="mis-avisos.html">Mis avisos</a>
+            </li>
+            <li data-rol="admin" hidden><a class="header__enlace" href="admin.html">Admin</a></li>
+            <li data-sesion="invitado"><a class="header__enlace" href="login.html">Entrar</a></li>
+            <li data-sesion="invitado">
+              <a class="header__enlace" href="registro.html">Registrarse</a>
+            </li>
+            <li data-sesion="activa" hidden>
+              <span class="header__usuario" data-nombre-usuario></span>
+            </li>
+            <li data-sesion="activa" hidden>
+              <button class="header__boton" type="button" data-logout>Salir</button>
+            </li>
+            <li>
+              <button class="header__boton" type="button" data-tema-alternar aria-pressed="false">
+                Tema oscuro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="principal contenedor" id="contenido">
+      <div class="pagina__encabezado">
+        <p class="eyebrow">Resultados de búsqueda</p>
+        <h1 id="resultados-titulo">Buscando coincidencias…</h1>
+        <p id="resultados-resumen"></p>
+      </div>
+      <p id="resultados-mensaje" class="mensaje" role="status" aria-live="polite">Cargando…</p>
+
+      <section id="sin-coincidencias" class="panel" hidden>
+        <h2>Tu aviso quedó activo</h2>
+        <p>
+          Todavía no hay objetos encontrados parecidos al tuyo. Cuando el administrador registre uno
+          que coincida, te avisaremos.
+        </p>
+        <div class="acciones seccion">
+          <a id="enlace-cartel" class="boton" href="aviso-imprimible.html">Ver cartel «SE BUSCA»</a
+          ><a class="boton boton--secundario" href="mis-avisos.html">Ir a mis avisos</a>
+        </div>
+      </section>
+
+      <section id="con-coincidencias" class="seccion" aria-labelledby="coincidencias-titulo" hidden>
+        <div class="seccion__titulo">
+          <h2 id="coincidencias-titulo">Posibles coincidencias</h2>
+          <a href="mis-avisos.html">Ninguno es mío: mantener el aviso activo</a>
+        </div>
+        <div id="lista-coincidencias" class="rejilla rejilla--objetos"></div>
+      </section>
+
+      <dialog id="confirmar-reclamo" class="dialogo" aria-labelledby="reclamo-titulo">
+        <h2 id="reclamo-titulo">Reclamar objeto</h2>
+        <p id="reclamo-texto"></p>
+        <p class="texto-suave">
+          Acude a la oficina de objetos perdidos. El administrador te pedirá la característica oculta
+          de tu aviso para entregártelo.
+        </p>
+        <form method="dialog" class="acciones">
+          <button class="boton boton--secundario" type="submit" value="cancelar" autofocus>
+            Cancelar</button
+          ><button class="boton" type="submit" value="confirmar">Reclamar</button>
+        </form>
+      </dialog>
+    </main>
+    <footer class="footer">
+      <div class="contenedor">Objetos Perdidos Campus · Una comunidad que se ayuda.</div>
+    </footer>
+  </body>
+</html>

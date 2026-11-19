@@ -117,8 +117,7 @@ const PAGINAS = new Set([
   'resultados.html',
   'mis-avisos.html',
   'admin.html',
-  'aviso-imprimible.html',
-  'prueba.html'
+  'aviso-imprimible.html'
 ]);
 
 /**

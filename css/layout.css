@@ -229,3 +229,45 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* Reportar: errores por campo y zona de arrastre de la foto. */
+.campo__error {
+  color: var(--color-error);
+  font-weight: 600;
+}
+[aria-invalid='true'] {
+  border-color: var(--color-error) !important;
+}
+.zona-arrastre {
+  display: grid;
+  gap: var(--espacio-xs);
+  justify-items: center;
+  text-align: center;
+  padding: var(--espacio-lg) var(--espacio-md);
+  border: 2px dashed var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+  cursor: pointer;
+}
+.zona-arrastre:hover,
+.zona-arrastre:focus-within,
+.zona-arrastre--activa {
+  border-color: var(--color-primario);
+}
+.zona-arrastre:focus-within {
+  outline: 2px solid var(--color-primario);
+  outline-offset: 2px;
+}
+.zona-arrastre__texto {
+  font-weight: 600;
+}
+
+/* Resultados: pie de tarjeta con puntaje y botón Reclamar. */
+.coincidencia__pie {
+  justify-content: space-between;
+  margin-top: var(--espacio-md);
+}
+.coincidencia__puntaje {
+  font-weight: 700;
+  color: var(--color-primario);
+}
